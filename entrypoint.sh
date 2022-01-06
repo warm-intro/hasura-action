@@ -7,10 +7,12 @@ if [ -z "$HASURA_ENDPOINT" ]; then
     exit 126
 fi
 
-command="hasura $* --endpoint '$HASURA_ENDPOINT'"
+migrate_command="hasura migrate apply --all-databases --endpoint '$HASURA_ENDPOINT'"
+metadata_command="hasura metadata apply --endpoint '$HASURA_ENDPOINT'"
 
 if [ -n "$HASURA_ADMIN_SECRET" ]; then
-    command="$command --admin-secret '$HASURA_ADMIN_SECRET'"
+    migrate_command="$migrate_command --admin-secret '$HASURA_ADMIN_SECRET'"
+    metadata_command="$metadata_command --admin-secret '$HASURA_ADMIN_SECRET'"
 fi
 
 if [ -n "$HASURA_WORKDIR" ]; then
@@ -36,6 +38,6 @@ else
 fi
 
 # secrets can be printed, they are protected by Github Actions
-echo "Executing $command from ${HASURA_WORKDIR:-./}"
+echo "Executing $migrate_command && $metadata_command from ${HASURA_WORKDIR:-./}"
 
-sh -c "$command"
+sh -c "$migrate_command && $metadata_command"
