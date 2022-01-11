@@ -1,4 +1,4 @@
-FROM frolvlad/alpine-glibc:glibc-2.33
+FROM frolvlad/alpine-glibc:alpine-3.15_glibc-2.33
 
 LABEL repository="https://github.com/warm-intro/hasura-action"
 LABEL homepage="https://github.com/warm-intro/hasura-action"
