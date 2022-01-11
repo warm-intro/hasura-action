@@ -1,11 +1,11 @@
-FROM frolvlad/alpine-glibc
+FROM frolvlad/alpine-glibc:glibc-2.33
 
-LABEL repository="https://github.com/tibotiber/hasura-action"
-LABEL homepage="https://github.com/tibotiber/hasura-action"
-LABEL maintainer="Thibaut Tiberghien <thibaut@smplrspace.com>"
+LABEL repository="https://github.com/warm-intro/hasura-action"
+LABEL homepage="https://github.com/warm-intro/hasura-action"
+LABEL maintainer="Warmly Dev <dev@warmly.ai>"
 
 LABEL com.github.actions.name="GitHub Action for Hasura"
-LABEL com.github.actions.description="Wraps the Hasura CLI to enable common commands."
+LABEL com.github.actions.description="Wraps the Hasura CLI to run migrate and metadata."
 LABEL com.github.actions.icon="terminal"
 LABEL com.github.actions.color="gray-dark"
 
