@@ -16,6 +16,12 @@ This Action for [Hasura](https://hasura.io) enables arbitrary actions with the `
 
 - `HASURA_ENGINE_VERSION` - **Optional**. The version of the hasura cli you want to use. By default, it will match the version from your endpoint and fall back on `stable` if the version endpoint request fails.
 
+- `MIGRATIONS_ONLY` - **Optional**. If value is true (lowercase string), only migrations will be run.
+
+- `METADATA_ONLY` - **Optional**. If value is true (lowercase string), only metadata apply will be run.
+
+- NOTE: if both MIGRATIONS_ONLY and METADATA_ONLY are set to "true", only migrations will run. If neither MIGRATIONS_ONLY or METADATA_ONLY are set to 'true', both will be ran.
+
 ## Example
 
 To apply migrations with the Hasura CLI:

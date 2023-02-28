@@ -37,7 +37,14 @@ else
   fi
 fi
 
-# secrets can be printed, they are protected by Github Actions
-echo "Executing $migrate_command && $metadata_command from ${HASURA_WORKDIR:-./}"
 
-sh -c "$migrate_command && $metadata_command"
+if [ "$MIGRATIONS_ONLY" = "true" ]; then
+    echo "Executing $migrate_command from ${HASURA_WORKDIR:-./}"    
+    sh -c "$migrate_command"
+elif [ "$METADATA_ONLY" = "true" ]; then
+    echo "Executing $metadata_command from ${HASURA_WORKDIR:-./}"    
+    sh -c "$metadata_command"
+else
+    echo "Executing $migrate_command && $metadata_command from ${HASURA_WORKDIR:-./}"
+    sh -c "$migrate_command && $metadata_command"
+fi
